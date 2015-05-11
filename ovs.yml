@@ -10,26 +10,31 @@
 
   - name: config ovs to add br1
     shell: ovs-vsctl add-br br1
+    ignore_errors: True
     tags:
     - config_ovs
 
   - name: config ovs to set br1 protocols
     shell: ovs-vsctl set bridge br1 protocols=OpenFlow13
+    ignore_errors: True
     tags:
     - config_ovs
 
   - name: config ovs to add br1 address
     shell: ifconfig br1 192.168.1.2 netmask 255.255.255.0
+    ignore_errors: True
     tags:
     - config_ovs
 
   - name: config ovs to add eth1
     shell: ovs-vsctl add-port br1 eth1
+    ignore_errors: True
     tags:
     - config_ovs
 
   - name: config ovs to add controller
     shell: ovs-vsctl set-controller br1 tcp:192.168.1.1
+    ignore_errors: True
     tags:
     - config_ovs
 
